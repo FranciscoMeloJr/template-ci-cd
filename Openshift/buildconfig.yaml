@@ -1,0 +1,31 @@
+## Example Build config with quarkus application
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: quarkus-test-build
+  namespace: quarkus
+spec:
+  runPolicy: "Serial" 
+  triggers: 
+    - type: "GitHub"
+      github:
+        secret: "secret101"
+    - type: "Generic"
+      generic:
+        secret: "secret101"
+    - type: "ImageChange"
+  source: 
+    git:
+      uri: https://github.com/FranciscoMeloJr/quarkus-tests.git
+      ref: "main"
+    contextDir: push-registy-poc
+  strategy: 
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'openjdk-11-runtime:1.16-1.1696518675'
+  output: 
+    to:
+      kind: ImageStreamTag
+      name: output-quarkus-sample:latest <--------------------------------- create this separated
