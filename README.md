@@ -8,3 +8,5 @@ Some of those concepts I discuss on this article:
 And this article I wrote that uses Dockerfile for building EAP with Galleon:
   https://developers.redhat.com/articles/2024/11/08/jboss-eap-images-galleon
   
+
+For quarkus tests (with source) I worked on https://github.com/FranciscoMeloJr/quarkus-tests
